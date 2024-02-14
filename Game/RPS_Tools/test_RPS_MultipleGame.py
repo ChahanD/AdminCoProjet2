@@ -1,22 +1,27 @@
+import unittest
+from RPS_MultipleGame import RPS_MultipleGame
 import os
-import sys
 
-# Ajout du chemin du dossier parent au sys.path pour permettre l'importation de modules
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+class TestRPSMultipleGame(unittest.TestCase):
+    def setUp(self):
+        self.game = RPS_MultipleGame()
+        self.player_id = 'TestPlayer'
 
-from RPS_Tools.RPS_MultipleGame import RPS_MultipleGame
+    def test_play_game_updates_history(self):
+        # Simuler un choix de joueur pour éviter l'interaction utilisateur
+        simulated_player_choice = 'R'
+        self.game.play_game(self.player_id, simulated_player_choice)
+        self.assertGreater(len(self.game.history), 0)
 
-def test_game():
-    """
-    Fonction pour tester le jeu RPS_MultipleGame.
-    Permet à l'utilisateur de jouer plusieurs parties et affiche l'historique à la fin.
-    """
-    game = RPS_MultipleGame()
-    while True:
-        game.play_game()
-        if input("Relancer une partie? (O/N): ").upper() != 'O':
-            break
-    game.show_history()
+    def test_csv_file_creation(self):
+        self.game.play_game(self.player_id)
+        self.assertTrue(os.path.exists(self.game.csv_file))
 
-if __name__ == "__main__":
-    test_game()
+    def tearDown(self):
+        if os.path.exists(self.game.csv_file):
+            os.remove(self.game.csv_file)
+
+    # Ajouter d'autres tests si nécessaire, par exemple pour vérifier le contenu du fichier CSV
+
+if __name__ == '__main__':
+    unittest.main()
