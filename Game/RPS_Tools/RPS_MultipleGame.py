@@ -1,64 +1,35 @@
 from RPS_SimpleGame import RPS_SimpleGame
 import random
-
 class RPS_MultipleGame:
-    """
-    Classe permettant de jouer plusieurs parties de Pierre/Feuille/Ciseaux contre l'ordinateur.
-    Elle garde un historique des parties jouées, y compris les choix et les résultats.
-    """
-    def __init__(self, player_name):
-        """
-        Initialise l'instance de RPS_MultipleGame.
-
-        :param player_name: Nom du joueur humain.
-        """
-        self.game = RPS_SimpleGame()
+    def __init__(self):
+        self.simple_game = RPS_SimpleGame()
         self.history = []
-        self.player_name = player_name 
-    
-    def play_game(self, player_choice):
-        """
-        Permet au joueur de jouer une partie contre l'ordinateur et enregistre le résultat.
-        """
-         # Affichage de l'historique des parties précédentes
-        if self.history:
-            print("Historique des parties précédentes:")
-            for game in self.history:
-                print(game)
-        while True : 
-            player_choice = input(f"{self.player_name}, Veuillez choisir [R]ock, [P]aper, [S]cissors: ").upper()
-            if player_choice not in ['R', 'P', 'S']:
-                print("Choix invalide")
-                return
-            computer_choice = random.choice(['R', 'P', 'S'])
-            result = self.game.SimplegameTwoPlayers(player_choice, computer_choice)
 
-            # partie qui s'occupe de l'historique des parties
-            game_record = {
-                'player_name': self.player_name,
-                'player_choice': player_choice,
-                'computer_choice': computer_choice,
-                'result': result
-            }
-            self.history.append(game_record)
-            replay = input("Voulez vous rejouer une partie? (Oui/Non)").lower()
-            if replay != "oui":
-                break
+    def play_game(self):
+        if self.history:  # Vérifie si l'historique n'est pas vide
+            print("Historique des parties précédentes :")
+            self.show_history()
+            print("\nNouvelle partie :\n")
+        
+        player_choice = self.get_user_choice()
+        computer_choice = random.choice(['R', 'P', 'S'])
+        result = self.simple_game.SimplegameTwoPlayers(player_choice, computer_choice)
+        self.history.append({'Player': player_choice, 'Computer': computer_choice, 'Result': result})
+        self.show_result(player_choice, computer_choice, result)
 
+    def get_user_choice(self):
+        choice = ''
+        while choice not in ['R', 'P', 'S']:
+            choice = input("Choose Rock (R), Paper (P), or Scissors (S): ").upper()
+        return choice
 
-        # Affichage de nos résultats
-        if result == 0:
-            print(f"Egalité ! L'ordinateur a également choisi {computer_choice}.")
-        elif result == 1:
-            print(f"{self.player_name} gagne ce duel ! L'ordinateur avait choisi {computer_choice}.")
-        else: 
-            print(f"L'ordinateur gagne ! il avait choisi {computer_choice}.")
+    def show_result(self, player_choice, computer_choice, result):
+        result_text = "Tie" if result == 0 else "Player Wins" if result == 1 else "Computer Wins"
+        print(f"Le joueur a joué: {player_choice}, L'ordinateur a joué: {computer_choice}, Le résultat est : {result_text}")
 
-    def get_history(self):
-        """
-        Retourne l'historique des parties jouées.
+    def show_history(self):
+        print("\nGame History:")
+        for game in self.history:
+            result_text = "Egalité" if game['Result'] == 0 else "Joueur gagne !" if game['Result'] == 1 else "Dommage l'ordinateur a gagné"
+            print(f"Le joueur a joué: {game['Player']}, L'ordinateur a joué: {game['Computer']}, Le résultat est : {result_text}")
 
-        :return: Liste des enregistrements de chaque partie jouée.
-        """
-        return self.history
-    

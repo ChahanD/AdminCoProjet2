@@ -1,5 +1,10 @@
 # Import de la classe RPS_SimpleGame depuis le fichier RPS_SimpleGame
-from RPS_SimpleGame import RPS_SimpleGame
+
+import os, sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from RPS_Tools.RPS_SimpleGame import RPS_SimpleGame
+
 
 
 def play_rps_game():
