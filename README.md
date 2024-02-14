@@ -30,6 +30,13 @@ Ce projet adhère aux normes de codage PEP 8 pour garantir la clarté et la coh�
 ## Utilisation
 - Exécutez ScriptSimpleGame.py pour une session de jeu simple.
 - Utilisez ScriptMultiple.py pour des sessions de jeu multiples avec historique.
+
+## Qualité du Code (Pylint Scores)
+Dans le cadre de nos efforts pour maintenir un code de haute qualité, nous utilisons pylint pour évaluer et améliorer notre code. Voici les notes actuelles de pylint pour nos principaux fichiers :
+
+- RPS_MultipleGame.py : Votre code a été évalué à 7.69/10 (précédente évaluation : 6.41/10, +1.28)
+- RPS_SimpleGame.py : Votre code a été évalué à 6.67/10 (précédente évaluation : 5.83/10, +0.83)
+
 ## Conclusion
 Ce projet a été une opportunité d'explorer des approches interactives et utilisateurs-friendly pour un jeu classique. L'accent a été mis sur la clarté du code et sur une implémentation intuitive pour l'utilisateur.
 

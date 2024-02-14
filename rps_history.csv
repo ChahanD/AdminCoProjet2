@@ -1,3 +1,10 @@
 PlayerID,PlayerChoice,ComputerChoice,Result
 chahan,R,R,0
 chahan,S,P,1
+Chahan,P,R,1
+ChahanLeBg,S,R,2
+Chahan,R,S,1
+Chahan,R,P,2
+Pierre,P,S,2
+Chahan3526,R,R,0
+Cahahan,R,P,2

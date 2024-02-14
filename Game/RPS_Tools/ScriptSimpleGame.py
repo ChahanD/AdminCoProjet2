@@ -28,7 +28,7 @@ def play_rps_game():
             return
         
         # Obtenir le résultat du jeu et le choix de l'ordinateur.
-        result, computer_choice = game.SimplegameOnePlayer(player_choice)
+        result, computer_choice = game.simple_game_one_player(player_choice)
 
         # Afficher le choix de l'ordinateur.
         print(f"L'ordinateur a joué: {computer_choice}")
@@ -44,7 +44,7 @@ def play_rps_game():
             return
 
         # Obtenir le résultat du jeu entre les deux joueurs.
-        result = game.SimplegameTwoPlayers(player1_choice, player2_choice)
+        result = game.simple_game_two_players(player1_choice, player2_choice)
     
     # Affichage du résultat du jeu.
     if result == 0:
