@@ -35,13 +35,11 @@ class RPS_MultipleGame:
         """
         Joue une partie et met à jour l'historique et le fichier CSV.
         """
-        if player_choice is None:
+        if player_choice is None or not player_choice in ['R', 'P', 'S']:
             player_choice = self.get_user_choice()
-        else:
-            assert player_choice in ['R', 'P', 'S'], "Choix invalide"
 
         computer_choice = random.choice(['R', 'P', 'S'])
-        result = self.simple_game.SimplegameTwoPlayers(player_choice, computer_choice)
+        result = self.simple_game.simple_game_two_players(player_choice, computer_choice)
 
         game_details = {
             'PlayerID': player_id,
