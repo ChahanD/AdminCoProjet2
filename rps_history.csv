@@ -60,3 +60,8 @@ TestPlayer,S,R,2
 TestPlayer,R,S,1
 TestPlayer,R,S,1
 ChahanLEFOU,R,S,1
+TestPlayer,R,R,0
+TestPlayer,P,R,1
+TestPlayer,S,R,2
+TestPlayer,R,S,1
+TestPlayer,R,S,1
