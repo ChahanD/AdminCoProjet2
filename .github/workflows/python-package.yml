@@ -25,5 +25,5 @@ jobs:
         pip install twine
         twine upload dist/*
       env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        TWINE_USERNAME: ${{ secrets.PYPI_ChahanD }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_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 }}
