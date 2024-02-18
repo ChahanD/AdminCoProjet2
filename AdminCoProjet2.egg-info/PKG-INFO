@@ -1,0 +1,123 @@
+Metadata-Version: 2.1
+Name: AdminCoProjet2
+Version: 1.0.0
+Summary: Ce projet implémente une version interactive du jeu classique Pierre/Feuille/Ciseaux.
+Home-page: https://github.com/ChahanD/AdminCoProjet2
+Author: Chahan Donikian
+Author-email: chahan.donikian@cpe.fr
+Description-Content-Type: text/markdown
+
+# <span style="color:#1591C0">Pierre/Feuille/Ciseaux
+## <span style="color:#1591C0">Ã€ propos du projet
+Ce projet implÃ©mente une version interactive du jeu classique Pierre/Feuille/Ciseaux. Contrairement Ã  l'approche traditionnelle qui retourne 0, 1, ou 2 pour indiquer respectivement une Ã©galitÃ©, une victoire du joueur 1, ou une victoire du joueur 2, notre implÃ©mentation retourne directement le rÃ©sultat sous forme de texte ("Ã‰galitÃ©", "Joueur 1 gagne", "Joueur 2 gagne", ou "L'ordinateur gagne").
+
+> Nous avons pris cette libertÃ© afin de pouvoir plus facilement ajouter des amÃ©liorations comme d'autres joueurs et augmenter la lisibilitÃ© des rÃ©sultats.
+
+## <span style="color:#1591C0">Structure du projet
+```bash 
+AdminCoProjet2/
+â”œâ”€â”€ .git/
+â”‚   â”œâ”€â”€ (fichiers et dossiers de configuration git)
+â”œâ”€â”€ Game/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ RPS_Tools/
+â”‚   â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”‚   â”œâ”€â”€ RPS_MultipleGame.py
+â”‚   â”‚   â”œâ”€â”€ RPS_SimpleGame.py
+â”‚   â”‚   â”œâ”€â”€ ScriptMultiple.py
+â”‚   â”‚   â”œâ”€â”€ ScriptSimpleGame.py
+â”‚   â”‚   â””â”€â”€ __pycache__/
+â”‚   â”‚       â”œâ”€â”€ __init__.cpython-310.pyc
+â”‚   â”‚       â”œâ”€â”€ RPS_MultipleGame.cpython-310.pyc
+â”‚   â”‚       â””â”€â”€ RPS_SimpleGame.cpython-310.pyc
+â”‚   â””â”€â”€ tests/
+â”‚       â”œâ”€â”€ __init__.py
+â”‚       â”œâ”€â”€ test_multiplegame.py
+â”‚       â””â”€â”€ test_simplegame.py
+â”œâ”€â”€ README.md
+â””â”€â”€ rps_history.csv
+```
+
+## <span style="color:#1591C0">Installation
+```bash
+git clone [URL_DU_DEPOT]
+cd AdminCoProjet2
+pip install -r requirements.txt
+```
+
+## <span style="color:#1591C0">FonctionnalitÃ©s
+- ***Mode de jeu flexible*** : Les utilisateurs peuvent choisir de jouer contre un autre joueur ou contre l'ordinateur.
+Affichage du choix de l'ordinateur : En mode un joueur, le choix de l'ordinateur est affichÃ© aprÃ¨s chaque tour.
+- ***Historique des parties*** : Les rÃ©sultats des parties prÃ©cÃ©dentes sont enregistrÃ©s et peuvent Ãªtre consultÃ©s pour des analyses.
+- ***RÃ¨gles standard de Pierre/Feuille/Ciseaux*** : La logique du jeu suit les rÃ¨gles standard de Pierre/Feuille/Ciseaux.
+- ***Automatisation des tests et intÃ©gration continue*** : Tests unitaires et utilisation d'outils CI pour garantir la qualitÃ© et la fiabilitÃ© du code.
+- ***StratÃ©gie non alÃ©atoire basÃ©e sur l'historique*** : L'ordinateur utilise l'historique des parties prÃ©cÃ©dentes pour proposer une stratÃ©gie plus prÃ©dictive et moins alÃ©atoire.
+
+
+## <span style="color:#1591C0">Fichiers et Fonctions Principales
+
+- ***RPS_SimpleGame.py*** : Ce fichier contient la classe RPS_SimpleGame avec deux mÃ©thodes principales :
+- ***SimplegameTwoPlayers(player1choice, player2choice)***: DÃ©termine le gagnant entre deux joueurs.
+- ***SimplegameOnePlayer(player1choice)*** : Permet Ã  un joueur de jouer contre l'ordinateur, retournant le rÃ©sultat du jeu et le choix de l'ordinateur.
+- ***RPS_MultipleGame.py*** : Classe pour gÃ©rer des sessions de jeu multiples, enregistre l'historique des parties dans un fichier CSV.
+- ***StratÃ©gies dans RPS_MultipleGame.py*** : ImplÃ©mentation de stratÃ©gies basÃ©es sur l'historique pour amÃ©liorer les choix de l'ordinateur.
+- ***ScriptSimpleGame.py*** : Script pour jouer une session de jeu simple.
+- ***ScriptMultiple.py*** : Script pour jouer des sessions de jeu multiples avec historique.
+
+
+
+## <span style="color:#1591C0">Tests Unitaires
+- ***test_RPS_SimpleGame.py*** : Fichier contenant les tests unitaires pour la classe RPS_SimpleGame. Ces tests assurent le bon fonctionnement de la logique du jeu.
+- ***test_RPS_MultipleGame.py*** : Fichier contenant les tests unitaires pour la classe RPS_MultipleGame, vÃ©rifiant le bon fonctionnement des parties multiples et de l'enregistrement de l'historique et vÃ©rifier les fonctionnalitÃ©s de stratÃ©gie non alÃ©atoire.
+
+
+## <span style="color:#1591C0">Respect des Normes PEP 8 et PEP 20
+ Ce projet adhÃ¨re aux normes de codage PEP 8 pour garantir la clartÃ© et la cohÃ©rence du code. Les principes PEP 20 tels que "Simple is better than complex" et "Readability counts" ont Ã©tÃ© suivis pour faciliter la maintenance et la comprÃ©hension du code.
+
+## <span style="color:#1591C0">Utilisation
+- ExÃ©cutez *ScriptSimpleGame.py* pour une session de jeu simple.
+- Utilisez *ScriptMultiple.py*  pour des sessions de jeu multiples avec historique.
+
+## <span style="color:#1591C0">QualitÃ© du Code (Pylint Scores)
+Dans le cadre de nos efforts pour maintenir un code de haute qualitÃ©, nous utilisons pylint et black pour Ã©valuer et amÃ©liorer notre code. Voici les notes actuelles de pylint pour nos principaux fichiers :
+
+Pour le fichier *RPS_MultipleGame.py* : 
+```bash
+Your code has been rated at 9.00/10 (previous run: 8.95/10, +0.05)
+```
+
+Pour le fichier *RPS_SimpleGame.py* : 
+```bash
+Your code has been rated at 7.50/10 (previous run: 6.67/10, +0.83)
+```
+
+Pour le fichier *test_multiplegame.py* : 
+```bash
+Your code has been rated at 7.50/10
+```
+
+Pour le fichier *test_simplegame.py* : 
+```bash
+Your code has been rated at 6.00/10 (previous run: 4.67/10, +1.33)
+```
+
+Pour le fichier *ScriptSimpleGame.py* : 
+```bash
+Your code has been rated at 7.33/10 (previous run: 5.52/10, +1.82)
+```
+Pour le fichier *ScriptMultipleGame.py* : 
+```bash
+Your code has been rated at 5.71/10 (previous run: 5.71/10, +0.00)
+```
+
+## <span style="color:#1591C0">Contribuer
+Pour contribuer au projet, veuillez suivre ces Ã©tapes :
+
+1. Fork le projet
+2. CrÃ©ez votre branche de fonctionnalitÃ© (git checkout -b feature/AmazingFeature)
+3. Committez vos changements (git commit -m 'Add some AmazingFeature')
+4. Push vers la branche (git push origin feature/AmazingFeature)
+
+## <span style="color:#1591C0">Conclusion
+Ce projet a Ã©tÃ© une opportunitÃ© d'explorer des approches interactives et utilisateurs-friendly pour un jeu classique. L'accent a Ã©tÃ© mis sur la clartÃ© du code et sur une implÃ©mentation intuitive pour l'utilisateur.
+

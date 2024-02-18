@@ -1,0 +1,15 @@
+README.md
+setup.py
+AdminCoProjet2.egg-info/PKG-INFO
+AdminCoProjet2.egg-info/SOURCES.txt
+AdminCoProjet2.egg-info/dependency_links.txt
+AdminCoProjet2.egg-info/top_level.txt
+Game/__init__.py
+Game/RPS_Tools/RPS_MultipleGame.py
+Game/RPS_Tools/RPS_SimpleGame.py
+Game/RPS_Tools/__init__.py
+Game/tests/ScriptMultiple.py
+Game/tests/ScriptSimpleGame.py
+Game/tests/__init__.py
+Game/tests/test_multiplegame.py
+Game/tests/test_simplegame.py
