@@ -1,0 +1,29 @@
+name: Build and Publish Python Package
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install setuptools wheel
+        pip install -r requirements.txt
+    - name: Build Wheel
+      run: python setup.py bdist_wheel
+    - name: Publish Package
+      if: github.ref == 'refs/heads/main'
+      run: |
+        pip install twine
+        twine upload dist/*
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
