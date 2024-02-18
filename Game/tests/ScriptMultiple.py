@@ -7,8 +7,12 @@ et d'afficher les résultats.
 Il démontre l'utilisation des importations, des fonctions, et de la gestion des chemins 
 d'accès au sein d'un projet Python plus vaste.
 """
+import sys 
+import os 
 
-from RPS_MultipleGame import RPS_MultipleGame
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from RPS_Tools.RPS_MultipleGame import RPS_MultipleGame
+
 
 
 def main():
@@ -21,6 +25,7 @@ def main():
     Returns:
         None
     """
+    
     game = RPS_MultipleGame()
     player_id = input("Enter your player ID: ")
 

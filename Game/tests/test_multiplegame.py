@@ -101,6 +101,19 @@ class TestRPSMultipleGame(unittest.TestCase):
             self.assertEqual(self.game.history[-2]["Result"], 1)
             self.assertEqual(self.game.history[-1]["Result"], 2)
 
+    def test_determine_computer_move(self):
+        """Teste la méthode determine_computer_move pour choisir un coup gagnant."""
+        self.assertEqual(self.game.determine_computer_move('R'), 'P')
+        self.assertEqual(self.game.determine_computer_move('P'), 'S')
+        self.assertEqual(self.game.determine_computer_move('S'), 'R')
+        
+    def test_analyze_history(self):
+        """Teste la méthode analyze_history pour prédire correctement le choix le plus fréquent."""
+        self.game.history = [{'PlayerChoice': 'R'}, {'PlayerChoice': 'P'}, {'PlayerChoice': 'R'}]
+        self.assertEqual(self.game.analyze_history(), 'R')
+
+
+
 
 if __name__ == "__main__":
     unittest.main()

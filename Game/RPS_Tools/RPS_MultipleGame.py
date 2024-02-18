@@ -4,7 +4,6 @@ Module pour le jeu Pierre-Feuille-Ciseaux avec gestion de multiples parties.
 
 import csv
 import os
-import random
 from .RPS_SimpleGame import RPS_SimpleGame
 
 
@@ -36,14 +35,21 @@ class RPS_MultipleGame:
         """
         Joue une partie et met à jour l'historique et le fichier CSV.
         """
+        # Obtient le choix du joueur, soit en demandant à l'utilisateur, soit en utilisant le choix fourni
         if player_choice is None or not player_choice in ["R", "P", "S"]:
             player_choice = self.get_user_choice()
+        # Analyse l'historique des parties pour prédire le prochain coup du joueur
+        predicted_move = self.analyze_history()
 
-        computer_choice = random.choice(["R", "P", "S"])
+        # Détermine le coup de l'ordinateur en fonction du coup prédit du joueur
+        computer_choice = self.determine_computer_move(predicted_move)
+
+        # Joue la partie en utilisant les choix du joueur et de l'ordinateur
         result = self.simple_game.simple_game_two_players(
             player_choice, computer_choice
-        )
-
+            )
+        
+        # Met à jour l'historique et le fichier CSV avec les détails de la partie
         game_details = {
             "PlayerID": player_id,
             "PlayerChoice": player_choice,
@@ -52,6 +58,7 @@ class RPS_MultipleGame:
         }
         self.history.append(game_details)
         self.update_csv(game_details)
+        # Affiche le résultat de la partie
         self.show_result(player_choice, computer_choice, result)
 
     def update_csv(self, game_details):
@@ -90,3 +97,19 @@ class RPS_MultipleGame:
         print(
             f"Joueur: {player_choice}, Ordinateur: {computer_choice}, Résultat: {result_text}"
         )
+    def analyze_history(self):
+        """Analyse l'historique des choix du joueur pour prédire son prochain coup."""
+        choice_count = {'R': 0, 'P': 0, 'S': 0}
+        for game in self.history:
+            player_choice = game['PlayerChoice']
+            choice_count[player_choice] += 1
+        return max(choice_count, key=choice_count.get)
+
+    def determine_computer_move(self, predicted_move):
+        """Détermine le coup de l'ordinateur basé sur le coup prédit du joueur."""
+        if predicted_move == 'R':
+            return 'P'  # Papier bat Pierre
+        elif predicted_move == 'P':
+            return 'S'  # Ciseaux battent Papier
+        else:
+            return 'R'  # Pierre bat Ciseaux
