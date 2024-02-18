@@ -26,4 +26,4 @@ jobs:
         twine upload dist/*
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_ChahanD }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_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 }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_AgENdGVzdC5weXBpLm9yZwIkMmEzZGRiMjEtYzAzMy00NWNlLTk3NmEtMTQyNDNiYzM2OTM1AAIqWzMsIjYwZWY5NTY3LWQ5MTctNDU5My1hNGZiLTc1ZjNkNDQ0ZjIyOSJdAAAGIBI9waSv0aMRBuWzYj-GEfI9RcDYOYTHvZuBeVm5yGwq }}
